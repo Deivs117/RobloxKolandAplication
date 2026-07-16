@@ -1,0 +1,8 @@
+  17:50:28.329  Money is not a valid member of Folder "Players.Deivs_117.leaderstats"  -  Servidor - CollectScript:9
+  17:50:28.329  Stack Begin  -  Studio
+  17:50:28.329  Script 'Workspace.Coin.CollectScript', Line 9 - function giveCoin  -  Studio - CollectScript:9
+  17:50:28.329  Stack End  -  Studio
+  17:50:28.427  Money is not a valid member of Folder "Players.Deivs_117.leaderstats"  -  Servidor - CollectScript:9
+  17:50:28.427  Stack Begin  -  Studio
+  17:50:28.427  Script 'Workspace.Coin.CollectScript', Line 9 - function giveCoin  -  Studio - CollectScript:9
+  17:50:28.427  Stack End  -  Studio
