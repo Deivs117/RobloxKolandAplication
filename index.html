@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía del Instructor: Roblox Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;600&family=Montserrat:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN para renderizado rápido) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bio-bg': '#F4F1EA',
+                        'bio-text': '#121314',
+                        'bio-green': '#4E5E52',
+                        'bio-blue': '#8FA9C4',
+                        'bio-rose': '#D8A499',
+                        'bio-brown': '#8C7870',
+                        'bio-silver': '#E5E7EB',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        tech: ['Space Grotesk', 'sans-serif'],
+                        code: ['Azeret Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados para el Pretty Print del Código */
+        .kwd { color: #D8A499; font-weight: 600; } /* Palabras clave en bio-rose */
+        .str { color: #8FA9C4; } /* Strings en bio-blue */
+        .cmnt { color: #8C7870; font-style: italic; } /* Comentarios en bio-brown */
+        .func { color: #4E5E52; font-weight: 600; } /* Funciones en bio-green */
+        .line-add { background-color: rgba(78, 94, 82, 0.15); border-left: 4px solid #4E5E52; }
+        .line-err { background-color: rgba(216, 164, 153, 0.15); border-left: 4px solid #D8A499; }
+    </style>
+</head>
+<!-- Se cambió a w-full para ocupar todo el ancho -->
+<body class="bg-bio-bg text-bio-text font-sans antialiased p-6 md:p-12 w-full">
+
+    <header class="w-full mb-16 border-b-2 border-bio-silver pb-8">
+        <p class="font-code text-sm text-bio-brown uppercase tracking-wider mb-2">Prueba Técnica – Pedagogía en Desarrollo de Videojuegos</p>
+        <h1 class="font-tech text-4xl md:text-5xl text-bio-green font-bold mb-4">Guía del Instructor: Roblox Studio & Scripting Creativo</h1>
+        <p class="text-lg">Material de apoyo visual y didáctico para explicar lógica de programación a niños de manera intuitiva y divertida.</p>
+    
+        <!-- SECCIÓN AGREGADA: Enlace accesible al juego de Roblox -->
+        <div class="mt-6">
+            <a href="https://www.roblox.com/es/games/122690961107386/KolandDeivs117Aplication" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="inline-flex items-center gap-2 bg-bio-green text-bio-bg font-tech font-bold px-6 py-3 rounded-lg shadow-sm hover:bg-opacity-90 transition-all duration-200">
+               <span>PROBAR PROYECTO EN ROBLOX</span>
+               <!-- Ícono minimalista de flecha externa -->
+               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+               </svg>
+            </a>
+        </div>
+
+    </header>
+
+    
+
+    <main class="w-full space-y-24">
+
+        <!-- SECCIÓN: LA MONEDA FANTASMA -->
+        <section>
+            <h2 class="font-tech text-3xl text-bio-green font-bold mb-6">El Misterio de la Moneda Fantasma</h2>
+            
+            <div class="bg-white p-8 rounded-xl border border-bio-silver shadow-sm mb-8">
+                <p class="mb-4"><strong>El problema del nombre:</strong> Imagina que tienes un amigo que es muy literal y solo hace exactamente lo que le dices. Tú tienes una alcancía en tu cuarto que tiene un letrero que dice <strong>'Coins'</strong>. Le das una moneda a tu amigo y le pides que vaya a guardarla en una alcancía llamada <strong>'Money'</strong>. Como la alcancía con ese nombre exacto no existe en tu cuarto, tu amigo se confunde, se queda congelado y te lanza un error diciendo que no la puede encontrar.</p>
+                <p><strong>El Semáforo (Debounce):</strong> Cuando pisas una moneda en la vida real, la recoges una vez y ya. Pero en la computadora, si dejas tu personaje parado sobre la moneda, ¡el juego cree que la estás tocando muchas veces por segundo! La variable <code>db</code> (debounce) es como un <strong>Semáforo</strong>. Cuando tocas la moneda por primera vez, el semáforo se pone en rojo. Así, aunque sigas ahí, el juego sabe que debe esperar hasta que el semáforo vuelva a verde para darte otra recompensa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+                <!-- Código Antes -->
+                <div class="bg-[#1a1b1e] rounded-xl overflow-hidden shadow-md h-full">
+                    <div class="bg-bio-text px-4 py-2 flex items-center justify-between border-b border-gray-700">
+                        <span class="font-code text-sm text-bio-silver">CollectScript_Bug.luau</span>
+                        <span class="text-bio-rose font-bold">❌ Error</span>
+                    </div>
+                    <!-- Agregado: whitespace-pre-wrap break-words para que el código baje de línea en vez de generar scroll -->
+                    <pre class="font-code text-sm text-bio-bg p-6 whitespace-pre-wrap break-words leading-relaxed h-full">
+<span class="kwd">local</span> player = game:GetService(<span class="str">"Players"</span>)
+
+<span class="kwd">function</span> <span class="func">giveCoin</span>(part)
+    <span class="cmnt">-- No hay semáforo (debounce), se cobra múltiples veces</span>
+    <span class="kwd">local</span> player = player:GetPlayerFromCharacter(part.Parent)
+    
+<div class="line-err px-2 -mx-2">    <span class="cmnt">-- ❌ El amigo busca la alcancía equivocada ("Money")</span>
+    player.leaderstats.Money.Value = player.leaderstats.Money.Value + 1</div>
+<span class="kwd">end</span></pre>
+                </div>
+
+                <!-- Código Después -->
+                <div class="bg-[#1a1b1e] rounded-xl overflow-hidden shadow-md h-full">
+                    <div class="bg-bio-text px-4 py-2 flex items-center justify-between border-b border-gray-700">
+                        <span class="font-code text-sm text-bio-silver">CollectScript_Fix.luau</span>
+                        <span class="text-bio-green font-bold">✅ Solución</span>
+                    </div>
+                    <pre class="font-code text-sm text-bio-bg p-6 whitespace-pre-wrap break-words leading-relaxed h-full">
+<span class="kwd">local</span> Players = game:GetService(<span class="str">"Players"</span>)
+
+<div class="line-add px-2 -mx-2"><span class="cmnt">-- ✅ Agregamos el semáforo en verde (falso)</span>
+<span class="kwd">local</span> db = <span class="kwd">false</span></div>
+<span class="kwd">function</span> <span class="func">giveCoin</span>(part)
+<div class="line-add px-2 -mx-2">    <span class="cmnt">-- ✅ Verificamos el semáforo</span>
+    <span class="kwd">if</span> db <span class="kwd">or</span> part.Parent:FindFirstChild(<span class="str">"Humanoid"</span>) == <span class="kwd">nil then</span>
+        <span class="kwd">return</span>
+    <span class="kwd">end</span>
+    db = <span class="kwd">true</span> <span class="cmnt">-- Ponemos el semáforo en rojo</span></div>
+    
+    <span class="kwd">local</span> player = Players:GetPlayerFromCharacter(part.Parent)
+    <span class="kwd">if</span> player <span class="kwd">then</span>
+<div class="line-add px-2 -mx-2">        <span class="cmnt">-- ✅ El amigo ahora busca "Coins" correctamente</span>
+        player.leaderstats.Coins.Value = player.leaderstats.Coins.Value + 1</div>
+    <span class="kwd">end</span>
+<span class="kwd">end</span></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: LA TIENDA SOLIDARIA -->
+        <section>
+            <h2 class="font-tech text-3xl text-bio-green font-bold mb-6">La Tienda Solidaria</h2>
+            
+            <div class="bg-white p-8 rounded-xl border border-bio-silver shadow-sm mb-8">
+                <p><strong>El error del cobro:</strong> Imagina que vas a la tienda de la esquina por un helado que cuesta 3 monedas. El tendero te entrega el helado, tú te lo empiezas a comer muy feliz... ¡pero te vas corriendo sin pagarle! El tendero original era muy despistado y olvidó revisar tus bolsillos para quitarte las 3 monedas que costaba el helado. Al agregar una instrucción extra, nos aseguramos de que el tendero sea justo y recuerde cobrar exactamente lo que corresponde por el superpoder de salto.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+                <!-- Código Antes -->
+                <div class="bg-[#1a1b1e] rounded-xl overflow-hidden shadow-md h-full">
+                    <div class="bg-bio-text px-4 py-2 flex items-center justify-between border-b border-gray-700">
+                        <span class="font-code text-sm text-bio-silver">Purchase_Script_Bug.luau</span>
+                        <span class="text-bio-rose font-bold">❌ Error</span>
+                    </div>
+                    <pre class="font-code text-sm text-bio-bg p-6 whitespace-pre-wrap break-words leading-relaxed h-full">
+<span class="kwd">local</span> upgradeCost = 3
+
+<span class="kwd">local function</span> <span class="func">giveUpgrade</span>(player) 
+    <span class="cmnt">-- [Código de búsqueda del jugador]</span>
+    <span class="kwd">if</span> playerCoins.Value >= upgradeCost <span class="kwd">then</span>
+        
+        <span class="cmnt">-- Da el poder de salto</span>
+        humanoid.UseJumpPower = <span class="kwd">true</span>
+        humanoid.JumpPower = humanoid.JumpPower + 100
+        
+<div class="line-err px-2 -mx-2">        <span class="cmnt">-- ❌ Falla: Olvidó descontar las monedas al jugador</span></div>
+    <span class="kwd">end</span>
+<span class="kwd">end</span></pre>
+                </div>
+
+                <!-- Código Después -->
+                <div class="bg-[#1a1b1e] rounded-xl overflow-hidden shadow-md h-full">
+                    <div class="bg-bio-text px-4 py-2 flex items-center justify-between border-b border-gray-700">
+                        <span class="font-code text-sm text-bio-silver">Purchase_Script_fix.luau</span>
+                        <span class="text-bio-green font-bold">✅ Solución</span>
+                    </div>
+                    <pre class="font-code text-sm text-bio-bg p-6 whitespace-pre-wrap break-words leading-relaxed h-full">
+<span class="kwd">local</span> upgradeCost = 3
+
+<span class="kwd">local function</span> <span class="func">giveUpgrade</span>(player) 
+    <span class="cmnt">-- [Código de búsqueda del jugador]</span>
+    <span class="kwd">if</span> playerCoins.Value >= upgradeCost <span class="kwd">then</span>
+        
+        <span class="cmnt">-- Da el poder de salto</span>
+        humanoid.UseJumpPower = <span class="kwd">true</span>
+        humanoid.JumpPower = humanoid.JumpPower + 100
+        
+<div class="line-add px-2 -mx-2">        <span class="cmnt">-- ✅ Éxito: Descuenta el costo exacto del saldo</span>
+        playerCoins.Value = playerCoins.Value - 3</div>
+    <span class="kwd">end</span>
+<span class="kwd">end</span></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: EL BAILE DE LA MONEDA -->
+        <section>
+            <h2 class="font-tech text-3xl text-bio-green font-bold mb-6">El Baile de la Moneda</h2>
+            
+            <div class="bg-white p-8 rounded-xl border border-bio-silver shadow-sm mb-8">
+                <p class="mb-4"><strong>El bucle de tiempo:</strong> <code>while true do</code> es como lanzar el hechizo de un bucle de tiempo. Le dice a la moneda: <em>'¡Haz este paso de baile para siempre!'</em>. Pero si no le damos un microdescanso usando <code>task.wait()</code>, la moneda intentará girar tan rápido que el universo del juego colapsará. Ese pequeño "wait" es la respiración que toma la moneda entre cada pasito.</p>
+                <p><strong>El Carrusel (La Orientación):</strong> Sumarle velocidad usando vectores es como ser el conductor de un carrusel. Le dices a la moneda: <em>"No te muevas hacia arriba, no te muevas hacia los lados, solo da un pequeño giro de 3 grados sobre tu propio eje de pie"</em> en cada respiración.</p>
+            </div>
+
+            <!-- Agregado: mx-auto para centrar y max-w-4xl para darle un tamaño proporcional al centro de la página -->
+            <div class="bg-[#1a1b1e] rounded-xl overflow-hidden shadow-md max-w-4xl mx-auto">
+                <div class="bg-bio-text px-4 py-2 flex items-center justify-between border-b border-gray-700">
+                    <span class="font-code text-sm text-bio-silver">ContinuosSpin.luau</span>
+                    <span class="text-bio-green font-bold">✅ Implementación</span>
+                </div>
+                <pre class="font-code text-sm text-bio-bg p-6 whitespace-pre-wrap break-words leading-relaxed">
+<span class="kwd">local</span> part = script.Parent
+<span class="kwd">local</span> speed = 3  <span class="cmnt">-- grados por fotograma</span>
+
+<div class="line-add px-2 -mx-2"><span class="kwd">while true do</span>
+    <span class="cmnt">-- ✅ La respiración (1 frame ~1/60s)</span>
+    task.wait()  
+    
+    <span class="cmnt">-- ✅ El pasito de baile (Rotación en el eje Y)</span>
+    part.Orientation += Vector3.new(0, speed, 0)
+<span class="kwd">end</span></div></pre>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: EL TELEFÉRICO DE LAS DOS TORRES -->
+        <section>
+            <h2 class="font-tech text-3xl text-bio-green font-bold mb-6">El Teleférico de las Dos Torres</h2>
+            
+            <div class="bg-white p-8 rounded-xl border border-bio-silver shadow-sm mb-8">
+                <p class="mb-4"><strong>El Director de Cine (TweenService):</strong> Mover una plataforma con código normal es muy "robótico" o torpe. El <code>TweenService</code> es como contratar a un <strong>Director de Cine de Animación</strong>. Tú solo le indicas dónde empieza, dónde termina y que debe tardar 7 segundos, ¡y el director se encarga de dibujar mágicamente todo el viaje súper fluido y sin tirones!</p>
+                <p><strong>El efecto Búmeran (Parámetros mágicos):</strong> Usamos un número mágico en programación, el <code>-1</code>, que significa <strong>Infinito</strong>, para decirle a la plataforma que nunca deje de trabajar. Además, encendemos el interruptor del <strong>Ping-Pong</strong> poniéndolo en <code>true</code>. Esto hace que cuando llegue a la segunda torre, no se teletransporte feo al inicio, sino que rebote suavemente como un búmeran.</p>
+            </div>
+
+            <!-- Agregado: mx-auto para centrar y max-w-4xl para darle un tamaño proporcional al centro de la página -->
+            <div class="bg-[#1a1b1e] rounded-xl overflow-hidden shadow-md max-w-4xl mx-auto">
+                <div class="bg-bio-text px-4 py-2 flex items-center justify-between border-b border-gray-700">
+                    <span class="font-code text-sm text-bio-silver">SlideMovement.luau</span>
+                    <span class="text-bio-green font-bold">✅ Implementación</span>
+                </div>
+                <pre class="font-code text-sm text-bio-bg p-6 whitespace-pre-wrap break-words leading-relaxed">
+<span class="kwd">local</span> TS = game:GetService(<span class="str">"TweenService"</span>)
+<span class="kwd">local</span> info = TweenInfo.new(
+    7,                         <span class="cmnt">-- ✅ Duración de 7 segundos</span>
+    Enum.EasingStyle.Cubic,
+    Enum.EasingDirection.InOut,
+    -1,                        <span class="cmnt">-- ✅ Bucle infinito</span>
+    <span class="kwd">true</span>                       <span class="cmnt">-- ✅ Efecto Ping-Pong (búmeran)</span>
+)
+<span class="kwd">local</span> tween = TS:Create(
+    script.Parent, info,
+    { Position = Vector3.new(58.6, 37.598, 45) }
+)
+tween:Play()</pre>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
